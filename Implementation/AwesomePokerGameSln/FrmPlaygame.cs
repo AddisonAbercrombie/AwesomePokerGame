@@ -17,8 +17,10 @@ namespace AwesomePokerGameSln {
     private PictureBox[] dealerCardPics;
     private Hand playerHand;
     private Hand dealerHand;
+    DateTime startTime = DateTime.Now;
+    Timer MyTimer = new Timer();
 
-    public FrmPlaygame() {
+        public FrmPlaygame() {
       InitializeComponent();
       playerCardPics = new PictureBox[5];
       for (int c = 1; c <= 5; c++) {
@@ -51,6 +53,41 @@ namespace AwesomePokerGameSln {
       }
       playerHand = new Hand(cards);
       lblHandType.Text = playerHand.getHandType().ToString();
+
+            // start timer
+
+            MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 10 - (DateTime.Now - startTime).Seconds); };
+            MyTimer.Interval = 1000;
+            MyTimer.Tick += new EventHandler(MyTimer_Tick);
+            MyTimer.Start();
+
+
+
+        }
+
+
+    private void MyTimer_Tick(object sender, EventArgs e)
+    {
+
+            if (TimerLabel.Text == "00 seconds remaining")
+            {
+                lblHandType.Text = "Times run out! You've folded!";
+                MyTimer.Stop();
+                DateTime Tthen = DateTime.Now;
+                
+
+
+                startTime = DateTime.Now;
+                MyTimer = new Timer();
+                MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 10 - (DateTime.Now - startTime).Seconds); };
+                dealCards();
+
+            }
+            else {
+
+                
+            }
+        
     }
 
     private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
@@ -66,5 +103,12 @@ namespace AwesomePokerGameSln {
     private void button1_Click(object sender, EventArgs e) {
       dealCards();
     }
-  }
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+
+            
+        }
+
+    }
 }
