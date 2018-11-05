@@ -17,6 +17,7 @@ namespace AwesomePokerGameSln {
     private PictureBox[] dealerCardPics;
     private Hand playerHand;
     private Hand dealerHand;
+    private Scorekeeper scorekeeper;
 
         const int AvatarPicBoxIndex = 6;
 
@@ -61,12 +62,20 @@ namespace AwesomePokerGameSln {
     }
 
     private void FrmPlaygame_Load(object sender, EventArgs e) {
+      scorekeeper = new Scorekeeper();
+      // This is a temporary function to emulate the cpu making the first bet
+      scorekeeper.updateBet();
+      scorekeeper.startUpdatePot();
+      updateValues();
       deck = new Deck();
       dealCards();
     }
 
     private void button1_Click(object sender, EventArgs e) {
       dealCards();
+      scorekeeper.updateBet();
+      scorekeeper.startUpdatePot();
+      updateValues();
     }
 
         /// <summary>
@@ -94,6 +103,23 @@ namespace AwesomePokerGameSln {
         private void pictureBox6_Click(object sender, EventArgs e)
         {
 
+        }
+    
+        private void updateValues()
+        {
+            potValue.Text = scorekeeper.potValue.ToString();
+            playerCurrency.Text = scorekeeper.playerCurrency.ToString();
+            cpuCurrency.Text = scorekeeper.cpuCurrency.ToString();
+            currentBet.Text = scorekeeper.currentBet.ToString();
+            playerBlind.Text = scorekeeper.playerBlind;
+            cpuBlind.Text = scorekeeper.cpuBlind;
+
+        }
+
+        private void callButton_Click(object sender, EventArgs e)
+        {
+            scorekeeper.callFunction();
+            updateValues();
         }
     }
 }
