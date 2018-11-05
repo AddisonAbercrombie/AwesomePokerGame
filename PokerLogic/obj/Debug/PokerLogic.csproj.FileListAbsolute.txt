@@ -1,0 +1,7 @@
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\bin\Debug\PokerLogic.xml
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\bin\Debug\PokerLogic.dll
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\bin\Debug\PokerLogic.pdb
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\obj\Debug\PokerLogic.csprojAssemblyReference.cache
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\obj\Debug\PokerLogic.csproj.CoreCompileInputs.cache
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\obj\Debug\PokerLogic.dll
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\PokerLogic\obj\Debug\PokerLogic.pdb

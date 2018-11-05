@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PokerLogic</name>
+    </assembly>
+    <members>
+        <member name="M:AwesomePokerGameSln.Code.Deck.#ctor">
+            <summary>
+            constructs a new deck object
+            </summary>
+        </member>
+        <member name="M:AwesomePokerGameSln.Code.Deck.newDeck">
+            <summary>
+            Generates a new deck of int,int tuples
+            </summary>
+        </member>
+    </members>
+</doc>

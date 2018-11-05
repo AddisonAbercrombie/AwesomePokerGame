@@ -1,0 +1,15 @@
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\AwesomePokerGameSln.exe.config
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\AwesomePokerGameSln.exe
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\AwesomePokerGameSln.pdb
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\PokerLogic.dll
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\PokerLogic.pdb
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\bin\Debug\PokerLogic.xml
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.csprojAssemblyReference.cache
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.FrmPlaygame.resources
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.FrmTitle.resources
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.Properties.Resources.resources
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.csproj.GenerateResource.cache
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.csproj.CoreCompileInputs.cache
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.csproj.CopyComplete
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.exe
+C:\Users\Crahn\Source\Repos\AwesomePokerGame2\Implementation\AwesomePokerGameSln\obj\Debug\AwesomePokerGameSln.pdb
