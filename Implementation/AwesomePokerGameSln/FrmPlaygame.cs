@@ -20,6 +20,8 @@ namespace AwesomePokerGameSln {
 
         const int AvatarPicBoxIndex = 6;
 
+
+
     public FrmPlaygame() {
       InitializeComponent();
       playerCardPics = new PictureBox[5];
@@ -53,7 +55,16 @@ namespace AwesomePokerGameSln {
       }
       playerHand = new Hand(cards);
       lblHandType.Text = playerHand.getHandType().ToString();
-    }
+            //MyTimer.Stop();
+            //TimerLabel.ForeColor = System.Drawing.Color.Black;
+            //TimerLabel.Text = "40 seconds remaining";
+            //lblHandType.Text = playerHand.getHandType().ToString();
+            //// start timer
+            //MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 40 - (DateTime.Now - startTime).Seconds); };
+            //MyTimer.Interval = 1000;
+            //MyTimer.Tick += new EventHandler(MyTimer_Tick);
+            //MyTimer.Start();
+        }
 
     private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
       foreach (Form f in Application.OpenForms)
@@ -92,6 +103,16 @@ namespace AwesomePokerGameSln {
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TimerLabel_TextChanged(object sender, EventArgs e)
         {
 
         }
