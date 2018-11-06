@@ -74,9 +74,7 @@ namespace AwesomePokerGameSln {
                 lblHandType.Text = "Times run out! You've folded!";
                 MyTimer.Stop();
                 DateTime Tthen = DateTime.Now;
-                
-
-
+            
                 startTime = DateTime.Now;
                 MyTimer = new Timer();
                 MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 10 - (DateTime.Now - startTime).Seconds); };
@@ -110,5 +108,9 @@ namespace AwesomePokerGameSln {
             
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

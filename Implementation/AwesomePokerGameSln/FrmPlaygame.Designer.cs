@@ -36,6 +36,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.TimerLabel = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -107,7 +108,7 @@
             // 
             this.lblHandType.AutoSize = true;
             this.lblHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandType.Location = new System.Drawing.Point(428, 345);
+            this.lblHandType.Location = new System.Drawing.Point(428, 372);
             this.lblHandType.Name = "lblHandType";
             this.lblHandType.Size = new System.Drawing.Size(99, 33);
             this.lblHandType.TabIndex = 7;
@@ -162,18 +163,29 @@
             // 
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimerLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.TimerLabel.Location = new System.Drawing.Point(434, 318);
+            this.TimerLabel.Location = new System.Drawing.Point(434, 345);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(207, 24);
             this.TimerLabel.TabIndex = 13;
             this.TimerLabel.Text = "TimerLabel";
             this.TimerLabel.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(431, 329);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Time left to play:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // FrmPlaygame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
@@ -221,5 +233,6 @@
     private System.Windows.Forms.PictureBox pictureBox4;
     private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox TimerLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
