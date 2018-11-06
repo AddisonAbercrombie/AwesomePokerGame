@@ -52,22 +52,24 @@ namespace AwesomePokerGameSln {
         dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
       }
       playerHand = new Hand(cards);
+            MyTimer.Stop();
+            TimerLabel.ForeColor = System.Drawing.Color.Black;
+            TimerLabel.Text = "40 seconds remaining";
       lblHandType.Text = playerHand.getHandType().ToString();
-
             // start timer
-
-            MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 10 - (DateTime.Now - startTime).Seconds); };
+            MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 40 - (DateTime.Now - startTime).Seconds); };
             MyTimer.Interval = 1000;
             MyTimer.Tick += new EventHandler(MyTimer_Tick);
             MyTimer.Start();
-
-
-
         }
 
 
     private void MyTimer_Tick(object sender, EventArgs e)
     {
+            if (TimerLabel.Text == "10 seconds remaining")
+            {
+                TimerLabel.ForeColor = System.Drawing.Color.Red;
+            }
 
             if (TimerLabel.Text == "00 seconds remaining")
             {
