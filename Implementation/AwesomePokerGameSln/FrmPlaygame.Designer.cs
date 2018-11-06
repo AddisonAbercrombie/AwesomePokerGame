@@ -184,18 +184,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(598, 345);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.Size = new System.Drawing.Size(125, 19);
             this.label1.TabIndex = 15;
             this.label1.Text = "Time left to play:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // TimerLabel
             // 
-            this.TimerLabel.Location = new System.Drawing.Point(601, 362);
+            this.TimerLabel.Location = new System.Drawing.Point(602, 367);
             this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(100, 20);
+            this.TimerLabel.Size = new System.Drawing.Size(130, 20);
             this.TimerLabel.TabIndex = 16;
             this.TimerLabel.TextChanged += new System.EventHandler(this.TimerLabel_TextChanged);
             // 

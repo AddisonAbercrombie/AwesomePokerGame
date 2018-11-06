@@ -19,10 +19,12 @@ namespace AwesomePokerGameSln {
     private Hand dealerHand;
 
         const int AvatarPicBoxIndex = 6;
+        DateTime startTime = DateTime.Now;
+        Timer MyTimer = new Timer();
 
 
 
-    public FrmPlaygame() {
+        public FrmPlaygame() {
       InitializeComponent();
       playerCardPics = new PictureBox[5];
       for (int c = 1; c <= 5; c++) {
@@ -55,15 +57,16 @@ namespace AwesomePokerGameSln {
       }
       playerHand = new Hand(cards);
       lblHandType.Text = playerHand.getHandType().ToString();
-            //MyTimer.Stop();
-            //TimerLabel.ForeColor = System.Drawing.Color.Black;
-            //TimerLabel.Text = "40 seconds remaining";
-            //lblHandType.Text = playerHand.getHandType().ToString();
-            //// start timer
-            //MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 40 - (DateTime.Now - startTime).Seconds); };
-            //MyTimer.Interval = 1000;
-            //MyTimer.Tick += new EventHandler(MyTimer_Tick);
-            //MyTimer.Start();
+            MyTimer.Stop();
+            TimerLabel.ForeColor = System.Drawing.Color.Black;
+            TimerLabel.Text = "30 seconds remaining";
+            startTime = DateTime.Now;
+            lblHandType.Text = playerHand.getHandType().ToString();
+            // start timer
+            MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 30 - (DateTime.Now - startTime).Seconds); };
+            MyTimer.Interval = 1000;
+            MyTimer.Tick += new EventHandler(MyTimer_Tick);
+            MyTimer.Start();
         }
 
     private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
@@ -115,6 +118,29 @@ namespace AwesomePokerGameSln {
         private void TimerLabel_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void MyTimer_Tick(object sender, EventArgs e)
+        {
+            if (TimerLabel.Text == "10 seconds remaining")
+            {
+                TimerLabel.ForeColor = System.Drawing.Color.Red;
+            }
+            if (TimerLabel.Text == "00 seconds remaining")
+            {
+                lblHandType.Text = "Times run out! You've folded!";
+                MyTimer.Stop();
+                DateTime Tthen = DateTime.Now;
+
+                startTime = DateTime.Now;
+                MyTimer = new Timer();
+                MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 30 - (DateTime.Now - startTime).Seconds); };
+
+                // this will need to be changed to call the fold method.
+                dealCards();
+
+            }
+            else { }
         }
     }
 }
