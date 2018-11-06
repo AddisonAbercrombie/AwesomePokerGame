@@ -57,6 +57,8 @@ namespace AwesomePokerGameSln {
       }
       playerHand = new Hand(cards);
       lblHandType.Text = playerHand.getHandType().ToString();
+
+            // set up timer
             MyTimer.Stop();
             TimerLabel.ForeColor = System.Drawing.Color.Black;
             TimerLabel.Text = "30 seconds remaining";
@@ -120,6 +122,13 @@ namespace AwesomePokerGameSln {
 
         }
 
+
+        /// <summary>
+        /// Handles timer tick. Adjusts color to red when 10 seconds left. When timer is up then it is restarted and 
+        /// hand is redealt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MyTimer_Tick(object sender, EventArgs e)
         {
             if (TimerLabel.Text == "10 seconds remaining")
