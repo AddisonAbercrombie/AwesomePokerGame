@@ -121,5 +121,42 @@ namespace AwesomePokerGameSln {
             scorekeeper.callFunction();
             updateValues();
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void raiseButton_Click(object sender, EventArgs e)
+        {
+            if (raiseInput.Visible == false)
+            {
+                raiseInput.Visible = true;
+                enterRaise.Visible = true;
+                raiseInputLabel.Visible = true;
+            }
+        }
+
+            private void raiseInput_TextChanged(object sender, EventArgs e)
+        {
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(raiseInput.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                raiseInput.Text = raiseInput.Text.Remove(raiseInput.Text.Length - 1);
+            }
+        }
+
+        private void enterRaise_Click(object sender, EventArgs e)
+        {
+            int raiseInt = Int32.Parse(raiseInput.Text);
+            if (raiseInt > scorekeeper.playerCurrency) MessageBox.Show("The value entered is more than you have!\n Enter a lower value");
+            else if (raiseInt <= scorekeeper.currentBet) MessageBox.Show("The amount you entered is lower than or equal to the current bet!\n Enter a higher value");
+            else
+            {
+                scorekeeper.raiseFunction(raiseInt);
+                updateValues();
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.picCard1 = new System.Windows.Forms.PictureBox();
             this.picCard3 = new System.Windows.Forms.PictureBox();
             this.picCard4 = new System.Windows.Forms.PictureBox();
@@ -49,6 +50,10 @@
             this.currentBet = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.potValue = new System.Windows.Forms.Label();
+            this.raiseInput = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.enterRaise = new System.Windows.Forms.Button();
+            this.raiseInputLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard4)).BeginInit();
@@ -247,7 +252,7 @@
             // 
             // callButton
             // 
-            this.callButton.Location = new System.Drawing.Point(594, 385);
+            this.callButton.Location = new System.Drawing.Point(594, 369);
             this.callButton.Name = "callButton";
             this.callButton.Size = new System.Drawing.Size(66, 44);
             this.callButton.TabIndex = 21;
@@ -257,12 +262,13 @@
             // 
             // raiseButton
             // 
-            this.raiseButton.Location = new System.Drawing.Point(667, 385);
+            this.raiseButton.Location = new System.Drawing.Point(666, 368);
             this.raiseButton.Name = "raiseButton";
             this.raiseButton.Size = new System.Drawing.Size(65, 45);
             this.raiseButton.TabIndex = 22;
             this.raiseButton.Text = "Raise";
             this.raiseButton.UseVisualStyleBackColor = true;
+            this.raiseButton.Click += new System.EventHandler(this.raiseButton_Click);
             // 
             // label7
             // 
@@ -302,11 +308,50 @@
             this.potValue.TabIndex = 26;
             this.potValue.Text = "potValue";
             // 
+            // raiseInput
+            // 
+            this.raiseInput.Location = new System.Drawing.Point(594, 418);
+            this.raiseInput.Name = "raiseInput";
+            this.raiseInput.Size = new System.Drawing.Size(95, 20);
+            this.raiseInput.TabIndex = 27;
+            this.raiseInput.Visible = false;
+            this.raiseInput.TextChanged += new System.EventHandler(this.raiseInput_TextChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // enterRaise
+            // 
+            this.enterRaise.Location = new System.Drawing.Point(689, 418);
+            this.enterRaise.Name = "enterRaise";
+            this.enterRaise.Size = new System.Drawing.Size(42, 20);
+            this.enterRaise.TabIndex = 29;
+            this.enterRaise.Text = "Enter";
+            this.enterRaise.UseVisualStyleBackColor = true;
+            this.enterRaise.Visible = false;
+            this.enterRaise.Click += new System.EventHandler(this.enterRaise_Click);
+            // 
+            // raiseInputLabel
+            // 
+            this.raiseInputLabel.AutoSize = true;
+            this.raiseInputLabel.Location = new System.Drawing.Point(538, 422);
+            this.raiseInputLabel.Name = "raiseInputLabel";
+            this.raiseInputLabel.Size = new System.Drawing.Size(54, 13);
+            this.raiseInputLabel.TabIndex = 30;
+            this.raiseInputLabel.Text = "Enter Bet:";
+            this.raiseInputLabel.Visible = false;
+            // 
             // FrmPlaygame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.raiseInputLabel);
+            this.Controls.Add(this.enterRaise);
+            this.Controls.Add(this.raiseInput);
             this.Controls.Add(this.potValue);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.currentBet);
@@ -381,5 +426,9 @@
         private System.Windows.Forms.Label currentBet;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label potValue;
+        private System.Windows.Forms.TextBox raiseInput;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button enterRaise;
+        private System.Windows.Forms.Label raiseInputLabel;
     }
 }

@@ -100,5 +100,12 @@ namespace AwesomePokerGameSln.Code
             currentBet = 0;
         }
 
+        public void raiseFunction(int raiseAmount)
+        {
+            playerCurrency -= raiseAmount;
+            potValue += raiseAmount;
+            currentBet = raiseAmount;
+        }
+
     }
 }
