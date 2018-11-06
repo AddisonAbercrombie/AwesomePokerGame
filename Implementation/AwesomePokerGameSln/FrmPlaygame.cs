@@ -10,52 +10,60 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CardType = System.Tuple<int, int>;
 
-namespace AwesomePokerGameSln {
-  public partial class FrmPlaygame : Form {
-    private Deck deck;
-    private PictureBox[] playerCardPics;
-    private PictureBox[] dealerCardPics;
-    private Hand playerHand;
-    private Hand dealerHand;
-    DateTime startTime = DateTime.Now;
-    Timer MyTimer = new Timer();
+namespace AwesomePokerGameSln
+{
+    public partial class FrmPlaygame : Form
+    {
+        private Deck deck;
+        private PictureBox[] playerCardPics;
+        private PictureBox[] dealerCardPics;
+        private Hand playerHand;
+        private Hand dealerHand;
+        DateTime startTime = DateTime.Now;
+        Timer MyTimer = new Timer();
 
-        public FrmPlaygame() {
-      InitializeComponent();
-      playerCardPics = new PictureBox[5];
-      for (int c = 1; c <= 5; c++) {
-        playerCardPics[c - 1] = this.Controls.Find("picCard" + c.ToString(), true)[0] as PictureBox;
-      }
-      dealerCardPics = new PictureBox[5];
-      for (int c = 1; c <= 5; c++) {
-        dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
-      }
-    }
+        public FrmPlaygame()
+        {
+            InitializeComponent();
+            playerCardPics = new PictureBox[5];
+            for (int c = 1; c <= 5; c++)
+            {
+                playerCardPics[c - 1] = this.Controls.Find("picCard" + c.ToString(), true)[0] as PictureBox;
+            }
+            dealerCardPics = new PictureBox[5];
+            for (int c = 1; c <= 5; c++)
+            {
+                dealerCardPics[c - 1] = this.Controls.Find("pictureBox" + c.ToString(), true)[0] as PictureBox;
+            }
+        }
 
-    private void dealCards() {
-      deck.shuffleDeck();
-      Tuple<int, int>[] cards = new Tuple<int, int>[5];
-      int index = 0;
-      foreach (PictureBox playerCardPic in playerCardPics) {
-        CardType card = deck.nextCard();
-        //CardType card = new CardType(index, inde);
-        cards[index++] = card;
-        playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
-      }
-      dealerHand = new Hand(cards);
-      cards = new CardType[5];
-      index = 0;
-      foreach (PictureBox dealerCardPic in dealerCardPics) {
-        CardType card = deck.nextCard();
-        //CardType card = new CardType(index, inde);
-        cards[index++] = card;
-        dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
-      }
-      playerHand = new Hand(cards);
+        private void dealCards()
+        {
+            deck.shuffleDeck();
+            Tuple<int, int>[] cards = new Tuple<int, int>[5];
+            int index = 0;
+            foreach (PictureBox playerCardPic in playerCardPics)
+            {
+                CardType card = deck.nextCard();
+                //CardType card = new CardType(index, inde);
+                cards[index++] = card;
+                playerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+            }
+            dealerHand = new Hand(cards);
+            cards = new CardType[5];
+            index = 0;
+            foreach (PictureBox dealerCardPic in dealerCardPics)
+            {
+                CardType card = deck.nextCard();
+                //CardType card = new CardType(index, inde);
+                cards[index++] = card;
+                dealerCardPic.BackgroundImage = CardImageHelper.cardToBitmap(card);
+            }
+            playerHand = new Hand(cards);
             MyTimer.Stop();
             TimerLabel.ForeColor = System.Drawing.Color.Black;
             TimerLabel.Text = "40 seconds remaining";
-      lblHandType.Text = playerHand.getHandType().ToString();
+            lblHandType.Text = playerHand.getHandType().ToString();
             // start timer
             MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 40 - (DateTime.Now - startTime).Seconds); };
             MyTimer.Interval = 1000;
@@ -64,50 +72,50 @@ namespace AwesomePokerGameSln {
         }
 
 
-    private void MyTimer_Tick(object sender, EventArgs e)
-    {
+        private void MyTimer_Tick(object sender, EventArgs e)
+        {
             if (TimerLabel.Text == "10 seconds remaining")
             {
                 TimerLabel.ForeColor = System.Drawing.Color.Red;
             }
-
             if (TimerLabel.Text == "00 seconds remaining")
             {
                 lblHandType.Text = "Times run out! You've folded!";
                 MyTimer.Stop();
                 DateTime Tthen = DateTime.Now;
-            
+
                 startTime = DateTime.Now;
                 MyTimer = new Timer();
                 MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 10 - (DateTime.Now - startTime).Seconds); };
+
+                // this will need to be changed to call the fold method.
                 dealCards();
 
             }
-            else {
+            else{ }
+        }
 
-                
-            }
-        
-    }
+        private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (Form f in Application.OpenForms)
+                f.Close();
+        }
 
-    private void FrmPlaygame_FormClosed(object sender, FormClosedEventArgs e) {
-      foreach (Form f in Application.OpenForms)
-        f.Close();
-    }
+        private void FrmPlaygame_Load(object sender, EventArgs e)
+        {
+            deck = new Deck();
+            dealCards();
+        }
 
-    private void FrmPlaygame_Load(object sender, EventArgs e) {
-      deck = new Deck();
-      dealCards();
-    }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dealCards();
+        }
 
-    private void button1_Click(object sender, EventArgs e) {
-      dealCards();
-    }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
 
-            
         }
 
         private void label1_Click(object sender, EventArgs e)
