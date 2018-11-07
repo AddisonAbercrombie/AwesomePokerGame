@@ -63,19 +63,22 @@ namespace AwesomePokerGameSln {
 
     private void FrmPlaygame_Load(object sender, EventArgs e) {
       scorekeeper = new Scorekeeper();
+      scorekeeper.startUpdatePot();
       // This is a temporary function to emulate the cpu making the first bet
       scorekeeper.updateBet();
-      scorekeeper.startUpdatePot();
       updateValues();
       deck = new Deck();
       dealCards();
+      startBet();
     }
 
     private void button1_Click(object sender, EventArgs e) {
       dealCards();
-      scorekeeper.updateBet();
       scorekeeper.startUpdatePot();
+      // This is a temporary function to emulate the cpu making the first bet
+      scorekeeper.updateBet();
       updateValues();
+      startBet();
     }
 
         /// <summary>
@@ -128,6 +131,7 @@ namespace AwesomePokerGameSln {
         {
             scorekeeper.callFunction();
             updateValues();
+            endBet();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -178,7 +182,29 @@ namespace AwesomePokerGameSln {
             {
                 scorekeeper.raiseFunction(raiseInt);
                 updateValues();
+                endBet();
             }
+        }
+
+        /// <summary>
+        /// function to enable the call and raise button
+        /// </summary>
+        private void startBet()
+        {
+            callButton.Enabled = true;
+            raiseButton.Enabled = true;
+        }
+
+        /// <summary>
+        /// function to disable the raise and call button, as well as hide the raise input auxilliary fields
+        /// </summary>
+        private void endBet()
+        {
+            callButton.Enabled = false;
+            raiseButton.Enabled = false;
+            raiseInput.Visible = false;
+            enterRaise.Visible = false;
+            raiseInputLabel.Visible = false;
         }
     }
 }

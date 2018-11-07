@@ -57,17 +57,6 @@ namespace AwesomePokerGameSln.Code
         }
 
         /// <summary>
-        /// Updates the pot and currencies to account for bets
-        /// </summary>
-        public void endUpdatePot()
-        {
-            potValue = currentBet * 2;
-            playerCurrency -= currentBet;
-            cpuCurrency -= currentBet;
-        }
-
-
-        /// <summary>
         /// Updates whose turn it is to be the Big blind, the other player gets the small blind
         /// </summary>
         public void updateBlindTurn()
