@@ -17,6 +17,7 @@ namespace AwesomePokerGameSln {
     private PictureBox[] dealerCardPics;
     private Hand playerHand;
     private Hand dealerHand;
+    private Scorekeeper scorekeeper;
 
         const int AvatarPicBoxIndex = 6;
         DateTime startTime = DateTime.Now;
@@ -77,12 +78,23 @@ namespace AwesomePokerGameSln {
     }
 
     private void FrmPlaygame_Load(object sender, EventArgs e) {
+      scorekeeper = new Scorekeeper();
+      scorekeeper.startUpdatePot();
+      // This is a temporary function to emulate the cpu making the first bet
+      scorekeeper.updateBet();
       deck = new Deck();
       dealCards();
+      startBet();
+      updateValues();
     }
 
     private void button1_Click(object sender, EventArgs e) {
       dealCards();
+      scorekeeper.startUpdatePot();
+      // This is a temporary function to emulate the cpu making the first bet
+      scorekeeper.updateBet();
+      startBet();
+      updateValues();
     }
 
         /// <summary>
@@ -137,19 +149,113 @@ namespace AwesomePokerGameSln {
             }
             if (TimerLabel.Text == "00 seconds remaining")
             {
-                lblHandType.Text = "Times run out! You've folded!";
+                lblHandType.Text = "Times run out!\nYou've folded!";
                 MyTimer.Stop();
                 DateTime Tthen = DateTime.Now;
 
                 startTime = DateTime.Now;
                 MyTimer = new Timer();
                 MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 30 - (DateTime.Now - startTime).Seconds); };
-
-                // this will need to be changed to call the fold method.
-                dealCards();
-
             }
-            else { }
+        }
+    
+        /// <summary>
+        /// Updates labels indicating point values and blind selection when called.
+        /// </summary>
+        private void updateValues()
+        {
+            potValue.Text = scorekeeper.potValue.ToString();
+            playerCurrency.Text = scorekeeper.playerCurrency.ToString();
+            cpuCurrency.Text = scorekeeper.cpuCurrency.ToString();
+            currentBet.Text = scorekeeper.currentBet.ToString();
+            playerBlind.Text = scorekeeper.playerBlind;
+            cpuBlind.Text = scorekeeper.cpuBlind;
+
+        }
+
+        /// <summary>
+        /// Calls the callFunction and updates appropriate values when clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void callButton_Click(object sender, EventArgs e)
+        {
+            scorekeeper.callFunction();
+            updateValues();
+            endBet();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// shows fields that allow player to choose an amount to raise when pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void raiseButton_Click(object sender, EventArgs e)
+        {
+            if (raiseInput.Visible == false)
+            {
+                raiseInput.Visible = true;
+                enterRaise.Visible = true;
+                raiseInputLabel.Visible = true;
+            }
+        }
+
+            /// <summary>
+            /// Stricts input to only numbers when text is changed
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void raiseInput_TextChanged(object sender, EventArgs e)
+        {
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(raiseInput.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                raiseInput.Text = raiseInput.Text.Remove(raiseInput.Text.Length - 1);
+            }
+        }
+
+        /// <summary>
+        /// Calls the raiseFunction and updates appropriate values when button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void enterRaise_Click(object sender, EventArgs e)
+        {
+            int raiseInt = Int32.Parse(raiseInput.Text);
+            if (raiseInt > scorekeeper.playerCurrency) MessageBox.Show("The value entered is more than you have!\n Enter a lower value");
+            else if (raiseInt <= scorekeeper.currentBet) MessageBox.Show("The amount you entered is lower than or equal to the current bet!\n Enter a higher value");
+            else
+            {
+                scorekeeper.raiseFunction(raiseInt);
+                updateValues();
+                endBet();
+            }
+        }
+
+        /// <summary>
+        /// function to enable the call and raise button
+        /// </summary>
+        private void startBet()
+        {
+            callButton.Enabled = true;
+            raiseButton.Enabled = true;
+        }
+
+        /// <summary>
+        /// function to disable the raise and call button, as well as hide the raise input auxilliary fields
+        /// </summary>
+        private void endBet()
+        {
+            callButton.Enabled = false;
+            raiseButton.Enabled = false;
+            raiseInput.Visible = false;
+            enterRaise.Visible = false;
+            raiseInputLabel.Visible = false;
         }
     }
 }
