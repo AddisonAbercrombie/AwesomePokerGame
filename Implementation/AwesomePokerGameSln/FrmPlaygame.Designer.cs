@@ -127,10 +127,10 @@
             // lblHandType
             // 
             this.lblHandType.AutoSize = true;
-            this.lblHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandType.Location = new System.Drawing.Point(428, 345);
+            this.lblHandType.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.lblHandType.Location = new System.Drawing.Point(389, 357);
             this.lblHandType.Name = "lblHandType";
-            this.lblHandType.Size = new System.Drawing.Size(99, 33);
+            this.lblHandType.Size = new System.Drawing.Size(70, 25);
             this.lblHandType.TabIndex = 7;
             this.lblHandType.Text = "label2";
             // 
@@ -350,7 +350,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(598, 345);
+            this.label1.Location = new System.Drawing.Point(476, 323);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 19);
             this.label1.TabIndex = 15;
@@ -359,7 +359,7 @@
             // 
             // TimerLabel
             // 
-            this.TimerLabel.Location = new System.Drawing.Point(602, 367);
+            this.TimerLabel.Location = new System.Drawing.Point(601, 322);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(130, 20);
             this.TimerLabel.TabIndex = 16;

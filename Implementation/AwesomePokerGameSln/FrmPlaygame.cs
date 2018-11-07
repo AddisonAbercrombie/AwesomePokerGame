@@ -82,10 +82,10 @@ namespace AwesomePokerGameSln {
       scorekeeper.startUpdatePot();
       // This is a temporary function to emulate the cpu making the first bet
       scorekeeper.updateBet();
-      updateValues();
       deck = new Deck();
       dealCards();
       startBet();
+      updateValues();
     }
 
     private void button1_Click(object sender, EventArgs e) {
@@ -93,8 +93,8 @@ namespace AwesomePokerGameSln {
       scorekeeper.startUpdatePot();
       // This is a temporary function to emulate the cpu making the first bet
       scorekeeper.updateBet();
-      updateValues();
       startBet();
+      updateValues();
     }
 
         /// <summary>
@@ -149,14 +149,14 @@ namespace AwesomePokerGameSln {
             }
             if (TimerLabel.Text == "00 seconds remaining")
             {
-                lblHandType.Text = "Times run out! You've folded!";
+                lblHandType.Text = "Times run out!\nYou've folded!";
                 MyTimer.Stop();
                 DateTime Tthen = DateTime.Now;
 
                 startTime = DateTime.Now;
                 MyTimer = new Timer();
                 MyTimer.Tick += (s, ev) => { TimerLabel.Text = String.Format("{0:00} seconds remaining", 30 - (DateTime.Now - startTime).Seconds); };
-
+            }
         }
     
         /// <summary>
