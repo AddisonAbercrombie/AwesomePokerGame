@@ -105,6 +105,9 @@ namespace AwesomePokerGameSln {
 
         }
     
+        /// <summary>
+        /// Updates labels indicating point values and blind selection when called.
+        /// </summary>
         private void updateValues()
         {
             potValue.Text = scorekeeper.potValue.ToString();
@@ -116,6 +119,11 @@ namespace AwesomePokerGameSln {
 
         }
 
+        /// <summary>
+        /// Calls the callFunction and updates appropriate values when clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void callButton_Click(object sender, EventArgs e)
         {
             scorekeeper.callFunction();
@@ -126,7 +134,11 @@ namespace AwesomePokerGameSln {
         {
 
         }
-
+        /// <summary>
+        /// shows fields that allow player to choose an amount to raise when pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void raiseButton_Click(object sender, EventArgs e)
         {
             if (raiseInput.Visible == false)
@@ -137,6 +149,11 @@ namespace AwesomePokerGameSln {
             }
         }
 
+            /// <summary>
+            /// Stricts input to only numbers when text is changed
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
             private void raiseInput_TextChanged(object sender, EventArgs e)
         {
 
@@ -147,6 +164,11 @@ namespace AwesomePokerGameSln {
             }
         }
 
+        /// <summary>
+        /// Calls the raiseFunction and updates appropriate values when button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void enterRaise_Click(object sender, EventArgs e)
         {
             int raiseInt = Int32.Parse(raiseInput.Text);

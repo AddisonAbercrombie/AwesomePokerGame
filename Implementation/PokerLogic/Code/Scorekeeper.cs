@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AwesomePokerGameSln.Code
 {
-    // Class to keep track of and update various game metrics
+    /// <summary>
+    /// Class to keep track of and update various game metrics
+    /// </summary>
     public class Scorekeeper
     {
         public int currentBet;
@@ -20,7 +22,10 @@ namespace AwesomePokerGameSln.Code
         public string cpuBlind;
         private Random rnd = new Random();
 
-        // Constructor -> Sets default values for current implementation of game
+      
+        /// <summary>
+        /// Constructor -> Sets default values for current implementation of game
+        /// </summary>
         public Scorekeeper() {
             currentBet = 0;
             blindTurn = null;
@@ -31,7 +36,10 @@ namespace AwesomePokerGameSln.Code
             smallBlind = 50;
         }
 
-        // Updates the pot and currencies at the beginning of the game to account for blinds
+
+        /// <summary>
+        /// Updates the pot and currencies at the beginning of the game to account for blinds
+        /// </summary>
         public void startUpdatePot()
         {
             potValue = bigBlind + smallBlind;
@@ -48,7 +56,9 @@ namespace AwesomePokerGameSln.Code
             }
         }
 
-        // Updates the pot and currencies to account for bets
+        /// <summary>
+        /// Updates the pot and currencies to account for bets
+        /// </summary>
         public void endUpdatePot()
         {
             potValue = currentBet * 2;
@@ -56,7 +66,10 @@ namespace AwesomePokerGameSln.Code
             cpuCurrency -= currentBet;
         }
 
-        // Updates whose turn it is to be the Big blind, the other player gets the small blind
+
+        /// <summary>
+        /// Updates whose turn it is to be the Big blind, the other player gets the small blind
+        /// </summary>
         public void updateBlindTurn()
         {
             if (blindTurn == null)
@@ -85,7 +98,10 @@ namespace AwesomePokerGameSln.Code
 
         }
 
-        // Placeholder function emulates the cpu betting first to test functionality of call and bet functions
+
+        /// <summary>
+        /// Placeholder function emulates the cpu betting first to test functionality of call and bet functions
+        /// </summary>
         public void updateBet()
         {
             currentBet = 50;
@@ -93,6 +109,9 @@ namespace AwesomePokerGameSln.Code
             potValue += 50;
         }
 
+        /// <summary>
+        /// Function that is called to adjust point values when a player uses the call button
+        /// </summary>
         public void callFunction()
         {
             potValue += currentBet;
@@ -100,6 +119,10 @@ namespace AwesomePokerGameSln.Code
             currentBet = 0;
         }
 
+        /// <summary>
+        /// function that is called to adjust point values when a player uses the raise button
+        /// </summary>
+        /// <param name="raiseAmount"></param>
         public void raiseFunction(int raiseAmount)
         {
             playerCurrency -= raiseAmount;
